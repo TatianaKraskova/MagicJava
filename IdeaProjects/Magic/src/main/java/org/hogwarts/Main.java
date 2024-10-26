@@ -1,10 +1,55 @@
 package main.java.org.hogwarts;
 
+import main.java.org.hogwarts.beast.Hippogriff;
+import main.java.org.hogwarts.items.Car;
+import main.java.org.hogwarts.items.Cloak;
+
 public class Main {
     public static void main(String[] args) {
-        RandomAssignments randomAssignments = new RandomAssignments();
-        randomAssignments.forthTask();
 
+        Hippogriff hippogriff = new Hippogriff();
+        Hippogriff hippogriff1 = new Hippogriff("First Hippogriff", 3, "White", true);
+        Hippogriff hippogriff2 = new Hippogriff("Second Hippogriff", "Black");
+        Hippogriff hippogriff3 = new Hippogriff("Third Hippogriff", 4, "Gray", false);
+        Hippogriff hippogriff4 = new Hippogriff();
+        hippogriff4.setName("Fourth Hippogriff");
+
+        // Create a student
+        Student studentHarry = new Student("Harry", "Griffindor", 17);
+        String result = hippogriff1.giveRide(studentHarry);
+        System.out.println("result: " + result);
+
+        // Create some spells
+        Spell spell1 = new Spell("Expelliarmus", 8);
+        Spell spell2 = new Spell("Stupefy", 8);
+
+        // cast a spell
+        try {
+            studentHarry.castSpell(spell1);
+            studentHarry.castSpell(spell2);
+        } catch (SpellCastException e) {
+            System.out.println(e.getMessage());
+        }
+
+        Student driver = new Student("Harry", "Gryffindor", 9);
+        Car car = new Car(driver, 100, true);
+        if (car.isFlying()) {
+            car.becomeVisible();
+        } else {
+            car.becomeInvisible();
+        }
+
+        Cloak cloak = new Cloak(5, 1000);
+        cloak.becomeVisible();
+        cloak.becomeInvisible();
+
+
+
+
+
+
+        // RandomAssignments randomAssignments = new RandomAssignments();
+        // randomAssignments.forthTask();
 
 //        Potion potion = new Potion();
 //        potion.prepare();
