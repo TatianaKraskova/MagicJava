@@ -3,58 +3,24 @@ package main.java.org.hogwarts;
 import main.java.org.hogwarts.beast.Hippogriff;
 import main.java.org.hogwarts.items.Car;
 import main.java.org.hogwarts.items.Cloak;
+import main.java.org.hogwarts.spels.ExpandingSpel;
+import main.java.org.hogwarts.spels.ReducingSpel;
+import main.java.org.hogwarts.spels.Spel;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
 
-        Hippogriff hippogriff = new Hippogriff();
-        Hippogriff hippogriff1 = new Hippogriff("First Hippogriff", 3, "White", true);
-        Hippogriff hippogriff2 = new Hippogriff("Second Hippogriff", "Black");
-        Hippogriff hippogriff3 = new Hippogriff("Third Hippogriff", 4, "Gray", false);
-        Hippogriff hippogriff4 = new Hippogriff();
-        hippogriff4.setName("Fourth Hippogriff");
-
-        // Create a student
-        Student studentHarry = new Student("Harry", "Griffindor", 17);
-        String result = hippogriff1.giveRide(studentHarry);
-        System.out.println("result: " + result);
-
-        // Create some spells
-        Spell spell1 = new Spell("Expelliarmus", 8);
-        Spell spell2 = new Spell("Stupefy", 8);
-
-        // cast a spell
-        try {
-            studentHarry.castSpell(spell1);
-            studentHarry.castSpell(spell2);
-        } catch (SpellCastException e) {
-            System.out.println(e.getMessage());
-        }
-
-        Student driver = new Student("Harry", "Gryffindor", 9);
-        Car car = new Car(driver, 100, true);
-        if (car.isFlying()) {
-            car.becomeVisible();
-        } else {
-            car.becomeInvisible();
-        }
-
-        Cloak cloak = new Cloak(5, 1000);
-        cloak.becomeVisible();
-        cloak.becomeInvisible();
-
-
-
-
-
-
-        // RandomAssignments randomAssignments = new RandomAssignments();
-        // randomAssignments.forthTask();
-
-//        Potion potion = new Potion();
-//        potion.prepare();
-
 /*
+         RandomAssignments randomAssignments = new RandomAssignments();
+         randomAssignments.forthTask();
+
+        Potion potion = new Potion();
+        potion.prepare();
+
+
         String[] recipe = {
                 "Засушенная чешуя василиска",
                 "Частичка души лесной феи",
@@ -71,20 +37,15 @@ public class Main {
         potion[3] = "Яд шершавого ядозуба";
         potion[4] = "Осколок кометы";
         System.out.println(Arrays.equals(recipe,potion));
-        */
 
-        /*
         SortingHat sortingHat = new SortingHat();
         sortingHat.sort();
         Quidditch quidditch = new Quidditch();
         quidditch.getBalls();
         quidditch.playGame();
 
-
         randomAssignments.generateSum();
-        */
 
-/*
         System.out.println("Oh you`re a magician, friend! Welcome to Hogwarts!");
         String dumbledoreName = "Dumbledore";
         String mcgonagallName = "Mcgonagall";
@@ -269,5 +230,131 @@ public class Main {
         // stringBuilder.replace(0,1, String.valueOf());
 
  */
+
+        Hippogriff hippogriff = new Hippogriff();
+        Hippogriff hippogriff1 = new Hippogriff("First Hippogriff", 3, "White", true);
+        Hippogriff hippogriff2 = new Hippogriff("Second Hippogriff", "Black");
+        Hippogriff hippogriff3 = new Hippogriff("Third Hippogriff", 4, "Gray", false);
+        Hippogriff hippogriff4 = new Hippogriff();
+        hippogriff4.setName("Fourth Hippogriff");
+
+        // Create a student
+        Student student1 = new Student("Harry", "Griffindor", 17);
+        Student student2 = new Student("Germiona", "Griffindor", 16);
+        Student student3 = new Student("Ron", "Griffindor", 18);
+        String result = hippogriff1.giveRide(student1);
+        System.out.println("result: " + result);
+
+        // Create some spells
+        Spell spell1 = new Spell("Expelliarmus", 8);
+        Spell spell2 = new Spell("Stupefy", 8);
+
+        // cast a spell
+        try {
+            student1.castSpell(spell1);
+            student1.castSpell(spell2);
+        } catch (SpellCastException e) {
+            System.out.println(e.getMessage());
+        }
+
+        Student driver = new Student("Harry", "Gryffindor", 9);
+        Car car = new Car(driver, 100, true);
+        if (car.isFlying()) {
+            car.becomeVisible();
+        } else {
+            car.becomeInvisible();
+        }
+
+        Cloak cloak = new Cloak(5, 1000);
+        cloak.becomeVisible();
+        cloak.becomeInvisible();
+
+        ReducingSpel reducingSpel = new ReducingSpel("Boost", "splash", true);
+        ExpandingSpel expandingSpel = new ExpandingSpel("Star", "sparkly", false);
+        reducingSpel.doMagic(); // Output for the reducing spell
+        expandingSpel.doMagic(); // Output for the expanding spell
+
+        /*
+        Третье задание
+        Создайте программу на Java, которая будет группировать список студентов по факультетам и курсам с использованием HashMap.
+        Сюжет: Вы работаете на должности администратора в университете и получили задание создать систему учёта студентов по факультетам и курсам.
+        Вы решаете использовать Java и HashMap для организации информации о студентах.
+        Требования:
+        Создайте класс Student, который будет содержать поля name (имя студента), faculty (факультет) и year (курс).
+        В классе Main, создайте список студентов и заполните его данными о студентах разных факультетов и курсов.
+        Создайте метод, который будет принимать список студентов и возвращать HashMap с ключом, состоящим из пары faculty и year, и значением — списком студентов, соответствующих данному факультету и курсу.
+        Реализуйте методы для следующих действий: добавление нового студента в список; удаление студента из списка по его имени, факультету и курсу; поиск всех студентов определённого факультета и курса;
+        вывод списка всех студентов сгруппированных по факультетам и курсам
+        Тестируйте вашу программу, выполняя различные операции с HashMap и убедитесь, что она работает корректно и эффективно группирует студентов по факультетам и курсам.
+         */
+
+        HashMap<String, Integer> listOfStudents = new HashMap<>();
+        listOfStudents.put(student1.getFaculty(), student1.getAge());
+        listOfStudents.put(student2.getFaculty(), student2.getAge());
+        listOfStudents.put(student3.getFaculty(), student3.getAge());
+
+        for(Map.Entry<String, Integer> entry : listOfStudents.entrySet()) {
+            System.out.println(" \n List Of Students. \n Key: " + entry.getKey() + ", Value: " + entry.getValue());
+
+        }
     }
 }
+
+/*
+from ChatGPT
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a list of students
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("Alice", "Griffindor", 1));
+        students.add(new Student("Bob", "Hufflepuff", 2));
+        students.add(new Student("Charlie", "Griffindor", 3));
+        students.add(new Student("David", "Ravenclaw", 1));
+        students.add(new Student("Eve", "Slytherin", 2));
+
+        // Group students by faculty and year using HashMap
+        HashMap<String, HashMap<Integer, List<Student>>> groupedStudents = groupStudents(students);
+
+        // Print the grouped students
+        printGroupedStudents(groupedStudents);
+    }
+
+    // Method to group students by faculty and year into a HashMap
+    private static HashMap<String, HashMap<Integer, List<Student>>> groupStudents(List<Student> students) {
+        HashMap<String, HashMap<Integer, List<Student>>> groupedStudents = new HashMap<>();
+
+        for (Student student : students) {
+            // Retrieve or create the inner HashMap for the faculty
+            HashMap<Integer, List<Student>> yearMap = groupedStudents.computeIfAbsent(student.getFaculty(), k -> new HashMap<>());
+
+            // Retrieve or create the list for the year
+            List<Student> studentList = yearMap.computeIfAbsent(student.getYear(), k -> new ArrayList<>());
+
+            // Add the student to the list
+            studentList.add(student);
+        }
+
+        return groupedStudents;
+    }
+
+    // Method to print grouped students
+    private static void printGroupedStudents(HashMap<String, HashMap<Integer, List<Student>>> groupedStudents) {
+        System.out.println("Grouped Students:");
+        for (Map.Entry<String, HashMap<Integer, List<Student>>> facultyEntry : groupedStudents.entrySet()) {
+            String faculty = facultyEntry.getKey();
+            System.out.println("Faculty: " + faculty);
+
+            HashMap<Integer, List<Student>> yearMap = facultyEntry.getValue();
+            for (Map.Entry<Integer, List<Student>> yearEntry : yearMap.entrySet()) {
+                int year = yearEntry.getKey();
+                List<Student> students = yearEntry.getValue();
+
+                System.out.println("  Year " + year + ":");
+                for (Student student : students) {
+                    System.out.println("    " + student.getName());
+                }
+            }
+        }
+    }
+ */

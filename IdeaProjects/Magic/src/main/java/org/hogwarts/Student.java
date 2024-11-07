@@ -1,6 +1,6 @@
 package main.java.org.hogwarts;
 
-public class Student {
+public class Student implements Comparable<Student>  {
     private String name;
     private String faculty;
     private int age;
@@ -46,6 +46,11 @@ public class Student {
 
         // If none of the above conditions threw an exception, the student can cast the spell
         System.out.println(this.name + " used " + spell.getTitle());
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return this.age;
     }
 }
 
