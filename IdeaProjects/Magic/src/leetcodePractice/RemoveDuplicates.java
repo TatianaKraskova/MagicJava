@@ -2,7 +2,7 @@ package leetcodePractice;
 
 import java.util.Arrays;
 
-public class removeDuplicates {
+public class RemoveDuplicates {
     // Remove Duplicates from Sorted Array
 
     public static int removeDuplicates(int[] nums) {

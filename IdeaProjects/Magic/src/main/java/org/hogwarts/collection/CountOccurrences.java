@@ -16,8 +16,8 @@ public class CountOccurrences {
         // Create a HashMap
         HashMap<Integer, Integer> map = new HashMap<>(); // create HashMap: key-order, value-int from the array
 
-        // Create a HashMap
         for (int i = 0; i < arr.length; i++) {
+
             // get the current number
             int num = arr[i];
             // increment the count in the map
